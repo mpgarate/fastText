@@ -11,9 +11,9 @@
 #include "quantmatrix.h"
 
 #include <algorithm>
+#include <future>
 #include <iomanip>
 #include <iostream>
-#include <future>
 #include <numeric>
 #include <sstream>
 #include <stdexcept>
