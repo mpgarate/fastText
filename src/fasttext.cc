@@ -123,7 +123,7 @@ void FastText::saveVectors(const std::string& filename) {
   std::ofstream ofs(filename);
   if (!ofs.is_open()) {
     throw std::invalid_argument(
-    filename + " cannot be opened for saving vectors!");
+        filename + " cannot be opened for saving vectors!");
   }
   ofs << dict_->nwords() << " " << args_->dim << std::endl;
 
