@@ -100,7 +100,6 @@ class FastText {
   std::shared_ptr<const DenseMatrix> getOutputMatrix() const;
 
   void saveVectors(const std::string& filename);
-  void saveVectorsParallel(const std::string& filename);
 
   void saveModel(const std::string& filename);
 

@@ -119,7 +119,7 @@ void FastText::getSubwordVector(Vector& vec, const std::string& subword) const {
 * output stream. A locking mechanism is used when writing to the stream
 * in order to avoid conflicts within a single line.
 */
-void FastText::saveVectorsParallel(const std::string& filename) {
+void FastText::saveVectors(const std::string& filename) {
   std::ofstream ofs(filename);
   if (!ofs.is_open()) {
     throw std::invalid_argument(
@@ -198,22 +198,6 @@ void FastText::streamVectorsParallelBatchLocked(int start_n, int end_n, std::ost
       ofs << out_string;
     }
   }
-}
-
-void FastText::saveVectors(const std::string& filename) {
-  std::ofstream ofs(filename);
-  if (!ofs.is_open()) {
-    throw std::invalid_argument(
-        filename + " cannot be opened for saving vectors!");
-  }
-  ofs << dict_->nwords() << " " << args_->dim << std::endl;
-  Vector vec(args_->dim);
-  for (int32_t i = 0; i < dict_->nwords(); i++) {
-    std::string word = dict_->getWord(i);
-    getWordVector(vec, word);
-    ofs << word << " " << vec << std::endl;
-  }
-  ofs.close();
 }
 
 void FastText::saveVectors() {
