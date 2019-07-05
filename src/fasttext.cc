@@ -138,7 +138,6 @@ void FastText::saveVectors(const std::string& filename) {
     int end_n = std::min(start_n + batch_size, num_words);
 
     // start one thread for each batch
-    // store the thread as a std::future
     futures.push_back(std::async(
       // start running asynchronously in a new thread right away
       std::launch::async,
@@ -151,7 +150,6 @@ void FastText::saveVectors(const std::string& filename) {
   }
 
   for (int i = 0; i < num_threads; i++) {
-    // block on each future, in order, until it is ready
     futures[i].wait();
   }
 
