@@ -141,7 +141,6 @@ void FastText::saveVectors(const std::string& filename) {
     // store the thread as a std::future
     futures.push_back(std::async(
       // start running asynchronously in a new thread right away
-      // there is *not* automatic thread pooling here
       std::launch::async,
       &FastText::streamVectorsParallelBatchLocked,
       this,
